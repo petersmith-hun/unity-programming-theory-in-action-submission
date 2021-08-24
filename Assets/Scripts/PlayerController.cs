@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject playerTPSCameraFocalPoint;
-
     private static readonly float playerWalkingSpeed = 10.0f;
     private static readonly float playerRunningSpeed = 30.0f;
     private static readonly float playerRotationSpeed = 2.0f;
-    
     
     private Animator playerAnimator;
 
