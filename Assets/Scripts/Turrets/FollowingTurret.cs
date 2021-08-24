@@ -40,6 +40,7 @@ public class FollowingTurret : AbstractBaseTurret
     {
         if (isPlayerNear)
         {
+            // TODO currently only works with y=90 base rotation
             directionToPlayer = player.transform.position - turretBody.transform.position;
             directionToPlayer.y = 0;
             turretBody.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up) * defaultTurretBodyRotation;
