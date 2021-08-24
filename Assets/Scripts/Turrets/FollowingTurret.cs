@@ -40,7 +40,8 @@ public class FollowingTurret : AbstractBaseTurret
     {
         if (isPlayerNear)
         {
-            directionToPlayer = player.transform.position - transform.position;
+            directionToPlayer = player.transform.position - turretBody.transform.position;
+            directionToPlayer.y = 0;
             turretBody.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up) * defaultTurretBodyRotation;
         }
     }
