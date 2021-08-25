@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1185414485e6afe48899acb83f1bbbac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 200
+  explosionForce: 50000
+  explosionParticle: {fileID: 0}
 --- !u!1001 &6475018112715505116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,7 +68,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1608322983579274724, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}
       propertyPath: m_Name
-      value: ExplodingProjectile
+      value: ExplodingProjectile Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1608322983579274727, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}

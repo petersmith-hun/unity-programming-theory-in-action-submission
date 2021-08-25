@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
+    
     private static readonly float playerWalkingSpeed = 20.0f;
     private static readonly float playerRunningSpeed = 50.0f;
     private static readonly float playerRotationSpeed = 2.0f;
@@ -15,6 +17,13 @@ public class PlayerController : MonoBehaviour
     private bool isPlayerRunning;
     private float currentAnimationSpeed = 0.0f;
     private float currentPlayerMovementSpeed = 0.0f;
+    private int health = 1000;
+
+    public void DamagePlayer(int damage)
+    {
+        health -= damage;
+        Debug.Log($"Current health: {health}");
+    }
 
     void Start()
     {

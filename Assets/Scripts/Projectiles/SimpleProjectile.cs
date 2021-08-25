@@ -6,9 +6,10 @@ public class SimpleProjectile : MonoBehaviour
 {
     public ProjectileObjectPool projectileObjectPool { private get; set; }
     
-    private static readonly float projectileSpeed = 80.0f;
+    private static readonly float projectileSpeed = 500.0f;
     
     private Vector3? targetDirection;
+    [SerializeField] protected int damage;
 
     public void FireProjectile(Vector3 targetDirection)
     {
@@ -29,16 +30,16 @@ public class SimpleProjectile : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnCollisionEnter(Collision other) 
     {
         HandleProjectileHit(other);
     }
 
-    private void HandleProjectileHit(Collider other)
+    private void HandleProjectileHit(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            OnPlayerHit(other.gameObject.GetComponent<PlayerController>());
+            OnPlayerHit(other);
         }
 
         InactivateProjectile();
@@ -56,10 +57,10 @@ public class SimpleProjectile : MonoBehaviour
         targetDirection = null;
     }
 
-    protected virtual void OnPlayerHit(PlayerController playerController)
+    protected virtual void OnPlayerHit(Collision playerCollision)
     {
-        // TODO this should be moved to the projectile controller
-        // TODO maybe the turret should parameterize the projectile if some special "effect" is needed
-        // TODO implement, override for following turret
+        playerCollision.gameObject
+            .GetComponent<PlayerController>()
+            .DamagePlayer(damage);
     }
 }

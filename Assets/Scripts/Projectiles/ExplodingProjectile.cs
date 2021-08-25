@@ -4,9 +4,34 @@ using UnityEngine;
 
 public class ExplodingProjectile : SimpleProjectile
 {
-    protected override void OnPlayerHit(PlayerController playerController)
+    [SerializeField] private float explosionForce;
+    private ParticleSystem explosionParticle;
+
+    private Vector3 explosionVector;
+
+    void Start()
     {
-        // TODO add "explosion" (push back the player)
-        base.OnPlayerHit(playerController);
+        explosionParticle = GameObject.Find("Player").GetComponentInChildren<ParticleSystem>();
+    }
+
+    protected override void OnPlayerHit(Collision playerCollision)
+    {
+        PlayExplosionEffect();
+        PushBackPlayer(playerCollision);
+        base.OnPlayerHit(playerCollision);
+    }
+
+    private void PlayExplosionEffect()
+    {
+        explosionParticle.Play();
+    }
+
+    private void PushBackPlayer(Collision playerCollision)
+    {
+        explosionVector = playerCollision.transform.position - transform.position;
+
+        playerCollision.gameObject
+            .GetComponent<Rigidbody>()
+            .AddForce(explosionVector * explosionForce, ForceMode.Impulse);
     }
 }

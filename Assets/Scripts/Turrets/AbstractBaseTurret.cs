@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class AbstractBaseTurret : MonoBehaviour
 {
-    [SerializeField] public int damage { get; private set; }
     [SerializeField] private float attackRate;
 
     private static readonly float firstAttackDelay = 2.0f;
