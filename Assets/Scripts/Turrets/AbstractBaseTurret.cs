@@ -6,19 +6,16 @@ public abstract class AbstractBaseTurret : MonoBehaviour
 {
     [SerializeField] public int damage { get; private set; }
     [SerializeField] private float attackRate;
-    [SerializeField] protected Vector3 targetDirection = Vector3.forward;
 
     private static readonly float firstAttackDelay = 2.0f;
 
     private ProjectileObjectPool projectileObjectPool;
-    private Transform projectileSpawn;
 
     private GameObject currentProjectile;
 
     void Start() 
     {
         projectileObjectPool = GetComponent<ProjectileObjectPool>();
-        projectileSpawn = transform.Find("Body/ProjectileSpawn");
         InvokeRepeating("Attack", firstAttackDelay, attackRate);
     }
 
@@ -28,6 +25,11 @@ public abstract class AbstractBaseTurret : MonoBehaviour
     }
 
     protected virtual void Attack()
+    {
+        Attack(transform.Find("Body/ProjectileSpawn"));
+    }
+
+    protected virtual void Attack(Transform projectileSpawn)
     {
         currentProjectile = projectileObjectPool.GetProjectile();
         if (currentProjectile != null)
