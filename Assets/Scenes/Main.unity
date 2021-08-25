@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 394985114}
     m_Modifications:
+    - target: {fileID: -6046422972302479982, guid: 21113c9c3e903a84186100729de1869b, type: 3}
+      propertyPath: projectileGameObject
+      value: 
+      objectReference: {fileID: 5731406195914600504, guid: 8578e7ca975c56b489808a3804e33dae, type: 3}
     - target: {fileID: 3857002567184543568, guid: 21113c9c3e903a84186100729de1869b, type: 3}
       propertyPath: m_Name
       value: SimpleTurret_Following_1
@@ -211,6 +215,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 394985114}
     m_Modifications:
+    - target: {fileID: -6046422972302479982, guid: 21113c9c3e903a84186100729de1869b, type: 3}
+      propertyPath: projectileGameObject
+      value: 
+      objectReference: {fileID: 5731406195914600504, guid: 8578e7ca975c56b489808a3804e33dae, type: 3}
     - target: {fileID: 3857002567184543568, guid: 21113c9c3e903a84186100729de1869b, type: 3}
       propertyPath: m_Name
       value: SimpleTurret_Following_2
@@ -434,6 +442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 394985114}
     m_Modifications:
+    - target: {fileID: -6046422972302479982, guid: 21113c9c3e903a84186100729de1869b, type: 3}
+      propertyPath: projectileGameObject
+      value: 
+      objectReference: {fileID: 1608322983579274724, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}
     - target: {fileID: 3857002567184543568, guid: 21113c9c3e903a84186100729de1869b, type: 3}
       propertyPath: m_Name
       value: SimpleTurret_Default_2
@@ -935,6 +947,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 394985114}
     m_Modifications:
+    - target: {fileID: -6046422972302479982, guid: 21113c9c3e903a84186100729de1869b, type: 3}
+      propertyPath: projectileGameObject
+      value: 
+      objectReference: {fileID: 1608322983579274724, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}
     - target: {fileID: 3857002567184543568, guid: 21113c9c3e903a84186100729de1869b, type: 3}
       propertyPath: m_Name
       value: SimpleTurret_Default_1
@@ -992,6 +1008,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 394985114}
     m_Modifications:
+    - target: {fileID: -4517884302311011937, guid: 61316951adf163e4281dd71b01403c02, type: 3}
+      propertyPath: poolSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -4517884302311011937, guid: 61316951adf163e4281dd71b01403c02, type: 3}
+      propertyPath: projectileGameObject
+      value: 
+      objectReference: {fileID: 1608322983579274724, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}
     - target: {fileID: 6060256304840487717, guid: 61316951adf163e4281dd71b01403c02, type: 3}
       propertyPath: m_RootOrder
       value: 4

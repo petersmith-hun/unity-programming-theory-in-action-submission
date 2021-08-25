@@ -6,11 +6,17 @@ public abstract class AbstractBaseTurret : MonoBehaviour
 {
     [SerializeField] public int damage { get; private set; }
     [SerializeField] private float attackRate;
+    [SerializeField] protected Vector3 targetDirection = Vector3.forward;
 
     private static readonly float firstAttackDelay = 2.0f;
 
+    private ProjectileObjectPool projectileObjectPool;
+
+    private GameObject currentProjectile;
+
     void Start() 
     {
+        projectileObjectPool = GetComponent<ProjectileObjectPool>();
         InvokeRepeating("Attack", firstAttackDelay, attackRate);
     }
 
@@ -19,23 +25,19 @@ public abstract class AbstractBaseTurret : MonoBehaviour
         Move();
     }
 
-    private void OnTriggerEnter(Collider other) 
+    protected virtual void Attack()
     {
-        if (other.CompareTag("Player"))
+        currentProjectile = projectileObjectPool.GetProjectile();
+        if (currentProjectile != null)
         {
-            OnPlayerHit();
+            currentProjectile.transform.position = transform.position;
+            currentProjectile.GetComponent<SimpleProjectile>().FireProjectile(targetDirection);
+        }
+        else
+        {
+            Debug.Log($"[{gameObject.name}] No more projectiles for you! Maybe 'destroy' some?");
         }
     }
 
-    protected virtual void Attack()
-    {
-        // TODO implement
-    }
-
     protected abstract void Move();
-
-    protected virtual void OnPlayerHit()
-    {
-        // TODO implement, override for following turret
-    }
 }

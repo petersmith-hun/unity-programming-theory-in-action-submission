@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private static readonly float playerWalkingSpeed = 10.0f;
-    private static readonly float playerRunningSpeed = 30.0f;
+    private static readonly float playerWalkingSpeed = 20.0f;
+    private static readonly float playerRunningSpeed = 50.0f;
     private static readonly float playerRotationSpeed = 2.0f;
     
     private Animator playerAnimator;
