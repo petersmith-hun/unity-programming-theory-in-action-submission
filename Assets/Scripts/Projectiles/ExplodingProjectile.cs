@@ -5,33 +5,30 @@ using UnityEngine;
 public class ExplodingProjectile : SimpleProjectile
 {
     [SerializeField] private float explosionForce;
+    
+    private Rigidbody playerRigidbody;
     private ParticleSystem explosionParticle;
-
     private Vector3 explosionVector;
 
     void Start()
     {
+        playerRigidbody = GameObject.Find("Player").GetComponent<Rigidbody>();
         explosionParticle = GameObject.Find("Player").GetComponentInChildren<ParticleSystem>();
     }
 
     protected override void OnPlayerHit(Collision playerCollision)
     {
-        PlayExplosionEffect();
+        explosionParticle.Play();
         PushBackPlayer(playerCollision);
         base.OnPlayerHit(playerCollision);
     }
 
-    private void PlayExplosionEffect()
-    {
-        explosionParticle.Play();
-    }
-
     private void PushBackPlayer(Collision playerCollision)
     {
-        explosionVector = playerCollision.transform.position - transform.position;
+        explosionVector = (playerCollision.transform.position - transform.position).normalized;
 
-        playerCollision.gameObject
-            .GetComponent<Rigidbody>()
-            .AddForce(explosionVector * explosionForce, ForceMode.Impulse);
+        playerRigidbody.AddForce(Vector3.up * 1000, ForceMode.Impulse);
+        // TODO this is not working properly, fix it later
+        // playerRigidbody.AddForceAtPosition(explosionVector * explosionForce, playerRigidbody.centerOfMass, ForceMode.Impulse);
     }
 }

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 200
-  explosionForce: 50000
-  explosionParticle: {fileID: 0}
+  explosionForce: 20000
 --- !u!1001 &6475018112715505116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22,6 +21,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5374182285585608055, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1608322983579274723, guid: a6ad1374f5511c54cb2f53f964c1aeab, type: 3}
       propertyPath: m_RootOrder
       value: 0
