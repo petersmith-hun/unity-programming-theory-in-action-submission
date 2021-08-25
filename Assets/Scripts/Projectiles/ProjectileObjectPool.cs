@@ -28,7 +28,7 @@ public class ProjectileObjectPool : MonoBehaviour
 
     public void InactivateProjectile(GameObject projectile)
     {
-        gameObject.SetActive(false);
+        projectile.SetActive(false);
     }
 
     void Start()

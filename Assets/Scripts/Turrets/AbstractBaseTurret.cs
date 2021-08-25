@@ -33,10 +33,6 @@ public abstract class AbstractBaseTurret : MonoBehaviour
             currentProjectile.transform.position = transform.position;
             currentProjectile.GetComponent<SimpleProjectile>().FireProjectile(targetDirection);
         }
-        else
-        {
-            Debug.Log($"[{gameObject.name}] No more projectiles for you! Maybe 'destroy' some?");
-        }
     }
 
     protected abstract void Move();

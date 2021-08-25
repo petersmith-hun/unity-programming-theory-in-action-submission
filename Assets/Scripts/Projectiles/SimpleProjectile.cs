@@ -6,14 +6,14 @@ public class SimpleProjectile : MonoBehaviour
 {
     public ProjectileObjectPool projectileObjectPool { private get; set; }
     
-    private static readonly float projectileSpeed = 30.0f;
+    private static readonly float projectileSpeed = 80.0f;
     
     private Vector3? targetDirection;
 
     public void FireProjectile(Vector3 targetDirection)
     {
         this.targetDirection = targetDirection;
-        // StartCoroutine(DestroyExpiredProjectile());
+        StartCoroutine(DestroyExpiredProjectile());
     }
 
     void Update()
@@ -52,7 +52,6 @@ public class SimpleProjectile : MonoBehaviour
 
     private void InactivateProjectile()
     {
-        Debug.Log($"Inactivating {gameObject.name}");
         projectileObjectPool.InactivateProjectile(gameObject);
         targetDirection = null;
     }
