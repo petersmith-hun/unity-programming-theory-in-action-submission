@@ -11,12 +11,14 @@ public abstract class AbstractBaseTurret : MonoBehaviour
     private static readonly float firstAttackDelay = 2.0f;
 
     private ProjectileObjectPool projectileObjectPool;
+    private Transform projectileSpawn;
 
     private GameObject currentProjectile;
 
     void Start() 
     {
         projectileObjectPool = GetComponent<ProjectileObjectPool>();
+        projectileSpawn = transform.Find("Body/ProjectileSpawn");
         InvokeRepeating("Attack", firstAttackDelay, attackRate);
     }
 
@@ -30,8 +32,8 @@ public abstract class AbstractBaseTurret : MonoBehaviour
         currentProjectile = projectileObjectPool.GetProjectile();
         if (currentProjectile != null)
         {
-            currentProjectile.transform.position = transform.position;
-            currentProjectile.GetComponent<SimpleProjectile>().FireProjectile(targetDirection);
+            currentProjectile.transform.position = projectileSpawn.position;
+            currentProjectile.GetComponent<SimpleProjectile>().FireProjectile(projectileSpawn.right);
         }
     }
 
