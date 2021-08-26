@@ -39,25 +39,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.isGameActive)
+        {
+            return;
+        }
+
         GatherInput();
         HandlePlayerMovement();
         TriggerPlayerMovementAnimation();
     }
 
     private void GatherInput()
-    {
-        if (!GameManager.instance.isGameActive)
-        {
-            return;
-        }
-        
+    {   
         verticalPlayerInput = Input.GetAxis("Vertical");
         horizontalPlayerInput = Input.GetAxis("Horizontal");
         isPlayerRunning = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void HandlePlayerMovement()
-    {
+    {   
         currentPlayerMovementSpeed = isPlayerRunning 
             ? playerRunningSpeed 
             : playerWalkingSpeed;

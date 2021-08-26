@@ -47,7 +47,7 @@ public class SimpleProjectile : MonoBehaviour
 
     private IEnumerator DestroyExpiredProjectile()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.5f);
         InactivateProjectile();
     }
 
