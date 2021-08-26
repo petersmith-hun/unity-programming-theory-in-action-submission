@@ -23,7 +23,7 @@ public class SimpleProjectile : MonoBehaviour
         StartCoroutine(DestroyExpiredProjectile());
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MoveProjectile();
     }

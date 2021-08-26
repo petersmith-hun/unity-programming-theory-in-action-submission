@@ -24,10 +24,10 @@ public class FollowingTurret : AbstractBaseTurret
         defaultTurretBodyRotation = turretBody.transform.rotation;
     }
     
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         CheckIfPlayerIsNear();
-        base.Update();
+        base.FixedUpdate();
     }
 
     // POLYMORPHISM

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private static readonly float playerWalkingSpeed = 20.0f;
     private static readonly float playerRunningSpeed = 50.0f;
     private static readonly float playerRotationSpeed = 2.0f;
-    private static readonly float playerMovementForceConstant = 2750.0f;
+    private static readonly float playerMovementForceConstant = 3000.0f;
     
     private Animator playerAnimator;
     private Rigidbody playerRigidbody;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         gameManager.SetDefaultHealth(health);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!GameManager.instance.isGameActive)
         {

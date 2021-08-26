@@ -21,7 +21,7 @@ public abstract class AbstractBaseTurret : MonoBehaviour
         InvokeRepeating("Attack", firstAttackDelay, attackRate);
     }
 
-    protected virtual void Update() 
+    protected virtual void FixedUpdate() 
     {
         if (GameManager.instance.isGameActive)
         {

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         gameOverScreen.SetActive(true);
         UpdatePlayerNameBar();
+        UnlockCursor();
     }
 
     // ABSTRACTION
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         UpdatePlayerNameBar();
+        LockCursor();
     }
 
     void Update()
@@ -91,7 +93,18 @@ public class GameManager : MonoBehaviour
     {
         if (isGameActive && Input.GetKeyDown(KeyCode.Escape))
         {
+            UnlockCursor();
             BackToMenu();
         }
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 }
