@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Slider healthBarSlider;
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private Text playerNameBar;
 
     public static GameManager instance { get; private set; }
 
@@ -28,10 +29,23 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = false;
         gameOverScreen.SetActive(true);
+        UpdatePlayerNameBar();
     }
 
     void Awake()
     {
         instance = this;
+        UpdatePlayerNameBar();
+    }
+
+    private void UpdatePlayerNameBar()
+    {
+        string playerName = GameSession.instance == null 
+            ? "player" 
+            : GameSession.instance.playerName;
+
+        playerNameBar.text = isGameActive 
+            ? $"Run, {playerName}, run!" 
+            : $"Try again, {playerName}!";
     }
 }
