@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive { get; private set; } = true;
     
     private float defaultHealth;
-    
+
     public void UpdateHealthIndicator(int currentHealth, bool isDefaultHealth = false)
     {
         if (isDefaultHealth)
@@ -31,11 +32,25 @@ public class GameManager : MonoBehaviour
         gameOverScreen.SetActive(true);
         UpdatePlayerNameBar();
     }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Scenes/TitleScreen");
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     void Awake()
     {
         instance = this;
         UpdatePlayerNameBar();
+    }
+
+    void Update()
+    {
+        HandleReturningToMenu();
     }
 
     private void UpdatePlayerNameBar()
@@ -47,5 +62,13 @@ public class GameManager : MonoBehaviour
         playerNameBar.text = isGameActive 
             ? $"Run, {playerName}, run!" 
             : $"Try again, {playerName}!";
+    }
+
+    private void HandleReturningToMenu()
+    {
+        if (isGameActive && Input.GetKeyDown(KeyCode.Escape))
+        {
+            BackToMenu();
+        }
     }
 }
