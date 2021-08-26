@@ -1,16 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    void Start()
+    [SerializeField] private Slider healthBarSlider;
+
+    public static GameManager instance { get; private set; }
+
+    public bool isGameActive { get; private set; } = true;
+    
+    private float defaultHealth;
+    
+    public void UpdateHealthIndicator(int currentHealth, bool isDefaultHealth = false)
     {
+        if (isDefaultHealth)
+        {
+            defaultHealth = currentHealth;
+        }
         
+        healthBarSlider.value = currentHealth / defaultHealth;
     }
 
-    void Update()
+    void Awake()
     {
-        
+        instance = this;
     }
 }

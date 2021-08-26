@@ -22,12 +22,13 @@ public class PlayerController : MonoBehaviour
     public void DamagePlayer(int damage)
     {
         health -= damage;
-        Debug.Log($"Current health: {health}");
+        gameManager.UpdateHealthIndicator(health);
     }
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
+        gameManager.UpdateHealthIndicator(health, true);
     }
 
     void Update()
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void GatherInput()
-    {
+    {   
         verticalPlayerInput = Input.GetAxis("Vertical");
         horizontalPlayerInput = Input.GetAxis("Horizontal");
         isPlayerRunning = Input.GetKey(KeyCode.LeftShift);
