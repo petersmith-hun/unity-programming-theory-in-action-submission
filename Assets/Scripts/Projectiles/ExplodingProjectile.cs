@@ -16,19 +16,19 @@ public class ExplodingProjectile : SimpleProjectile
         explosionParticle = GameObject.Find("Player").GetComponentInChildren<ParticleSystem>();
     }
 
-    protected override void OnPlayerHit(Collision playerCollision)
+    protected override void OnPlayerHit(Collider playerCollider)
     {
         explosionParticle.Play();
-        PushBackPlayer(playerCollision);
-        base.OnPlayerHit(playerCollision);
+        PushBackPlayer(playerCollider);
+        base.OnPlayerHit(playerCollider);
     }
 
-    private void PushBackPlayer(Collision playerCollision)
+    private void PushBackPlayer(Collider playerCollider)
     {
-        explosionVector = (playerCollision.transform.position - transform.position).normalized;
+        explosionVector = (playerCollider.transform.position - transform.position).normalized + Vector3.up;
 
-        playerRigidbody.AddForce(Vector3.up * 1000, ForceMode.Impulse);
         // TODO this is not working properly, fix it later
-        // playerRigidbody.AddForceAtPosition(explosionVector * explosionForce, playerRigidbody.centerOfMass, ForceMode.Impulse);
+        // playerRigidbody.AddForce(Vector3.up * explosionForce, ForceMode.Impulse);
+        playerRigidbody.AddForce(explosionVector * explosionForce, ForceMode.Impulse);
     }
 }

@@ -30,12 +30,12 @@ public class SimpleProjectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter(Collider other) 
     {
         HandleProjectileHit(other);
     }
 
-    private void HandleProjectileHit(Collision other)
+    private void HandleProjectileHit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -57,9 +57,9 @@ public class SimpleProjectile : MonoBehaviour
         targetDirection = null;
     }
 
-    protected virtual void OnPlayerHit(Collision playerCollision)
+    protected virtual void OnPlayerHit(Collider playerCollider)
     {
-        playerCollision.gameObject
+        playerCollider.gameObject
             .GetComponent<PlayerController>()
             .DamagePlayer(damage);
     }
