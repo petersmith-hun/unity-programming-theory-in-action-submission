@@ -421,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3857002567184543569}
   - component: {fileID: -6046422972302479982}
+  - component: {fileID: -961700812677686558}
   m_Layer: 0
   m_Name: SimpleTurret
   m_TagString: Untagged
@@ -458,6 +459,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileGameObject: {fileID: 0}
   poolSize: 10
+--- !u!65 &-961700812677686558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3857002567184543568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3193736, y: 4.4973, z: 2.020839}
+  m_Center: {x: -0.66781235, y: 2.0244827, z: -0.023915887}
 --- !u!1 &3857002567341366427
 GameObject:
   m_ObjectHideFlags: 0
