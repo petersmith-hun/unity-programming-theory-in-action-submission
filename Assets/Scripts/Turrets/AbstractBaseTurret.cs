@@ -20,7 +20,10 @@ public abstract class AbstractBaseTurret : MonoBehaviour
 
     protected virtual void Update() 
     {
-        Move();
+        if (GameManager.instance.isGameActive)
+        {
+            Move();
+        }
     }
 
     protected virtual void Attack()
@@ -30,6 +33,11 @@ public abstract class AbstractBaseTurret : MonoBehaviour
 
     protected virtual void Attack(Transform projectileSpawn)
     {
+        if (!GameManager.instance.isGameActive)
+        {
+            return;
+        }
+        
         currentProjectile = projectileObjectPool.GetProjectile();
         if (currentProjectile != null)
         {

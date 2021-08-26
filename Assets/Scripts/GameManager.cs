@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Slider healthBarSlider;
+    [SerializeField] private GameObject gameOverScreen;
 
     public static GameManager instance { get; private set; }
 
@@ -21,6 +22,12 @@ public class GameManager : MonoBehaviour
         }
         
         healthBarSlider.value = currentHealth / defaultHealth;
+    }
+
+    public void TriggerGameOver()
+    {
+        isGameActive = false;
+        gameOverScreen.SetActive(true);
     }
 
     void Awake()

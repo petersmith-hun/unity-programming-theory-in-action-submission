@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         gameManager.UpdateHealthIndicator(health);
+
+        if (health <= 0)
+        {
+            gameManager.TriggerGameOver();
+            TriggerPlayerDeathAnimation();
+        }
     }
 
     void Start()
@@ -35,11 +41,16 @@ public class PlayerController : MonoBehaviour
     {
         GatherInput();
         HandlePlayerMovement();
-        TriggerPlayerAnimation();
+        TriggerPlayerMovementAnimation();
     }
 
     private void GatherInput()
-    {   
+    {
+        if (!GameManager.instance.isGameActive)
+        {
+            return;
+        }
+        
         verticalPlayerInput = Input.GetAxis("Vertical");
         horizontalPlayerInput = Input.GetAxis("Horizontal");
         isPlayerRunning = Input.GetKey(KeyCode.LeftShift);
@@ -54,9 +65,9 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * horizontalPlayerInput * playerRotationSpeed);
     }
 
-    private void TriggerPlayerAnimation()
+    private void TriggerPlayerMovementAnimation()
     {
-        if (verticalPlayerInput > 0.0f)
+        if (verticalPlayerInput != 0.0f)
         {
             currentAnimationSpeed = isPlayerRunning ? 1.0f : 0.3f;
         }
@@ -66,5 +77,11 @@ public class PlayerController : MonoBehaviour
         }
 
         playerAnimator.SetFloat("Speed_f", currentAnimationSpeed);
+    }
+
+    private void TriggerPlayerDeathAnimation()
+    {
+        playerAnimator.SetInteger("DeathType_int", 1);
+        playerAnimator.SetBool("Death_b", true);
     }
 }
