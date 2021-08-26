@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// INHERITENCE
+// RotatingTurret is a child of AbstractBaseTurret
 public class RotatingTurret : AbstractBaseTurret
 {
     private static readonly float rotationSpeed = 0.5f;
@@ -16,11 +18,16 @@ public class RotatingTurret : AbstractBaseTurret
         projectileSpawns = GetProjectileSpawns();
     }
 
+    // POLYMORPHISM
+    // Attack method is overriden
+    // RotatingTurret attacks in 4 directions simultaneously
     protected override void Attack()
     {
         projectileSpawns.ForEach(Attack);
     }
 
+    // POLYMORPHISM
+    // Move method is overriden and it makes the turret constantly and slowly rotating.
     protected override void Move()
     {
         turretBody.transform.Rotate(Vector3.up * rotationSpeed);

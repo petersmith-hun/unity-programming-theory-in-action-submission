@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITENCE
+// SimpleProjectile is the parent of ExplodingProjectile
 public class SimpleProjectile : MonoBehaviour
 {
+    // ENCAPSULATION
     public ProjectileObjectPool projectileObjectPool { private get; set; }
     
     private static readonly float projectileSpeed = 500.0f;
@@ -11,6 +14,9 @@ public class SimpleProjectile : MonoBehaviour
     private Vector3? targetDirection;
     [SerializeField] protected int damage;
 
+    // ABSTRACTION
+    // Firing a projectile should be done by setting the target's direction, starting the expiration coroutine,
+    // and essentially moving the projectile towards the target.
     public void FireProjectile(Vector3 targetDirection)
     {
         this.targetDirection = targetDirection;

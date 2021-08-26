@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
     private float currentPlayerMovementSpeed = 0.0f;
     private int health = 1000;
 
+    // ABSTRACTION
+    // Damaging the player consists of multiple steps:
+    //  - Updatings its health value
+    //  - Notifying the game manager to update the health bar
+    //  - And triggering the game over sequence if the player's health drops to or below 0
     public void DamagePlayer(int damage)
     {
         health -= damage;
@@ -37,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
-        gameManager.UpdateHealthIndicator(health, true);
+        gameManager.SetDefaultHealth(health);
     }
 
     void Update()

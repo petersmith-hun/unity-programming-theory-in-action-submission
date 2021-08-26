@@ -12,6 +12,9 @@ public class ProjectileObjectPool : MonoBehaviour
 
     private GameObject currentProjectile;
 
+    // ABSTRACTION
+    // Getting a projectile is essentially looking up one inactive in the pool, 
+    // setting it to active status and returning its reference (if any available).
     public GameObject GetProjectile()
     {
         currentProjectile = pool
@@ -26,6 +29,8 @@ public class ProjectileObjectPool : MonoBehaviour
         return currentProjectile;
     }
 
+    // ABSTRACTION
+    // Inactivating a projectile is in fact setting its game object to inactive.
     public void InactivateProjectile(GameObject projectile)
     {
         projectile.SetActive(false);

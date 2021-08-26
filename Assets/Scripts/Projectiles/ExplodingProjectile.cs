@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITENCE
+// ExplodingProjectile is a child of SimpleProjectile
 public class ExplodingProjectile : SimpleProjectile
 {
     [SerializeField] private float explosionForce;

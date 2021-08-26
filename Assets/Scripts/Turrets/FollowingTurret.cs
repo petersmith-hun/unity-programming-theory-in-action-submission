@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITENCE
+// FollowingTurret is a child of AbstractBaseTurret
 public class FollowingTurret : AbstractBaseTurret
 {
     [SerializeField] private GameObject player;
@@ -28,6 +30,9 @@ public class FollowingTurret : AbstractBaseTurret
         base.Update();
     }
 
+    // POLYMORPHISM
+    // Attack method is overriden
+    // FollowingTurret attacks only when the player is near
     protected override void Attack()
     {
         if (isPlayerNear)
@@ -36,6 +41,8 @@ public class FollowingTurret : AbstractBaseTurret
         }
     }
 
+    // POLYMORPHISM
+    // Move method is overriden and it makes the turret trying to face and follow the player.
     protected override void Move()
     {
         if (isPlayerNear)

@@ -10,33 +10,56 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private Text playerNameBar;
 
+    // ENCAPSULATION
     public static GameManager instance { get; private set; }
 
+    // ENCAPSULATION
     public bool isGameActive { get; private set; } = true;
     
-    private float defaultHealth;
+    private float defaultHealth = 0.0f;
 
-    public void UpdateHealthIndicator(int currentHealth, bool isDefaultHealth = false)
+    // ENCAPSULATION
+    // Default health should be set only once then its value must be locked.
+    public void SetDefaultHealth(int defaultHealth)
     {
-        if (isDefaultHealth)
+        if (this.defaultHealth == 0.0f)
         {
-            defaultHealth = currentHealth;
+            this.defaultHealth = defaultHealth;
         }
-        
+        else
+        {
+            Debug.LogWarning("Default health value cannot be modified once set");
+        }
+    }
+
+    // ABSTRACTION
+    // Health indicator's value should be calculated based on the current and max health value.
+    public void UpdateHealthIndicator(int currentHealth)
+    {
         healthBarSlider.value = currentHealth / defaultHealth;
     }
 
+    // ABSTRACTION
+    // Triggering a game over consists of multiple steps:
+    //  - Flagging the game inactive
+    //  - Showing the game over screen
+    //  - Updating the player name bar
     public void TriggerGameOver()
     {
         isGameActive = false;
         gameOverScreen.SetActive(true);
         UpdatePlayerNameBar();
     }
+
+    // ABSTRACTION
+    // Moving back to the menu is essentially loading the title screen scene.
     public void BackToMenu()
     {
         SceneManager.LoadScene("Scenes/TitleScreen");
     }
 
+    // ABSTRACTION
+    // Retrying is essentially reloading the main scene.
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
