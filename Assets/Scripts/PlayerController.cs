@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     private static readonly float playerWalkingSpeed = 20.0f;
     private static readonly float playerRunningSpeed = 50.0f;
     private static readonly float playerRotationSpeed = 2.0f;
+    private static readonly float playerMovementForceConstant = 2000.0f;
     
     private Animator playerAnimator;
+    private Rigidbody playerRigidbody;
 
     private float verticalPlayerInput;
     private float horizontalPlayerInput;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
+        playerRigidbody = GetComponent<Rigidbody>();
         gameManager.UpdateHealthIndicator(health, true);
     }
 
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
         currentPlayerMovementSpeed = isPlayerRunning 
             ? playerRunningSpeed 
             : playerWalkingSpeed;
-        transform.Translate(Vector3.forward * currentPlayerMovementSpeed * Time.deltaTime * verticalPlayerInput, Space.Self);
+        playerRigidbody.AddForce(transform.forward * currentPlayerMovementSpeed * verticalPlayerInput * playerMovementForceConstant);
         transform.Rotate(Vector3.up * horizontalPlayerInput * playerRotationSpeed);
     }
 
