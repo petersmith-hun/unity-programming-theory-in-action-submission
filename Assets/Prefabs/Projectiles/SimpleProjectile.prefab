@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1608322983579274721}
   - component: {fileID: 1608322983579274726}
   - component: {fileID: 1608322983579274727}
-  - component: {fileID: 6228937661716010830}
+  - component: {fileID: -507299851577234660}
   m_Layer: 0
   m_Name: SimpleProjectile
   m_TagString: Untagged
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
---- !u!54 &6228937661716010830
+--- !u!54 &-507299851577234660
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
