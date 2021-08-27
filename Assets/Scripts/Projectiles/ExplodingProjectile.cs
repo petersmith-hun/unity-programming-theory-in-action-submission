@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// INHERITENCE
+// INHERITANCE
 // ExplodingProjectile is a child of SimpleProjectile
 public class ExplodingProjectile : SimpleProjectile
 {

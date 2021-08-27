@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// INHERITENCE
+// INHERITANCE
 // RotatingTurret is a child of AbstractBaseTurret
 public class RotatingTurret : AbstractBaseTurret
 {

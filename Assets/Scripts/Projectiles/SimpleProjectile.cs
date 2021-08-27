@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// INHERITENCE
+// INHERITANCE
 // SimpleProjectile is the parent of ExplodingProjectile
 public class SimpleProjectile : MonoBehaviour
 {

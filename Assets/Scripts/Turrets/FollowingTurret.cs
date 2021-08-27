@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// INHERITENCE
+// INHERITANCE
 // FollowingTurret is a child of AbstractBaseTurret
 public class FollowingTurret : AbstractBaseTurret
 {

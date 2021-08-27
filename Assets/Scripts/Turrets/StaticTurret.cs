@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// INHERITENCE
+// INHERITANCE
 // StaticTurret is a child of AbstractBaseTurret
 public class StaticTurret : AbstractBaseTurret
 {

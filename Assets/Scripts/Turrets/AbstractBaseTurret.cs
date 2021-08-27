@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// INHERITENCE
+// INHERITANCE
 // AbstractBaseTurret is the parent of FollowingTurret, RotatingTurret and StaticTurret.
 // Turrets have 2 abstract behaviors, Move and Attack.
 public abstract class AbstractBaseTurret : MonoBehaviour
